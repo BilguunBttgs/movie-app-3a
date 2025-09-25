@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,19 +11,18 @@ import {
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
-import { getMovieGenres } from "@/utils/get-data";
 import { GenreResponseType } from "@/types";
 
-export async function GenreDropdown() {
-  const genresResponse: GenreResponseType = await getMovieGenres();
-
-  console.log("GENRE RES", genresResponse);
-
+export function GenreDropdown({
+  genresResponse,
+}: {
+  genresResponse: GenreResponseType;
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
-          <ChevronDown /> Genre
+          <ChevronDown /> <span className="hidden sm:block">Genres</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="" align="start">
